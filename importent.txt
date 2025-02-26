@@ -1,0 +1,6 @@
+                     style A,B fill:#ffeeba,stroke:#333,stroke-width:2px;
+                    style C,D fill:#d4edda,stroke:#333,stroke-width:2px;
+                        style E fill:#cce5ff,stroke:#333,stroke-width:2px;
+
+                                    <Button>Get Started</Button>
+            <Button variant="outline">Learn More</Button>
