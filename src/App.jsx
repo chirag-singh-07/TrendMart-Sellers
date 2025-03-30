@@ -23,7 +23,10 @@ import HomePage from "./pages/HomePage";
 import DeshBoradPage from "./pages/DeshBoradPage";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
-import DashboardLayout from "./routes/DashboardLayout";
+// import DashboardLayout from "./routes/DashboardLayout";
+import DeshboardLayout from "./layout/DeshboardLayout";
+import SettingsPage from "./pages/SettingsPage";
+import ProductsPage from "./pages/ProductsPage";
 
 const App = () => {
   const { isCheckingAuth, checkAuth } = useAuthStore();
@@ -47,8 +50,10 @@ const App = () => {
 
       {/* Protected Routes (Require Authentication) */}
       <Route element={<AuthGuard />}>
-        <Route element={<DashboardLayout />}>
-          <Route path="dashboard" element={<DeshBoradPage />} />
+        <Route path="/dashboard" element={<DeshboardLayout />}>
+          <Route index element={<DeshBoradPage />} />
+          <Route path="products" element={<ProductsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="orders" element={<OrdersPage />} />
         </Route>

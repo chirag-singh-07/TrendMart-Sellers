@@ -37,7 +37,7 @@ const LandingHeroSection = () => {
             className="space-x-4"
           >
             <Link to={user ? "/dashboard" : "/register"}>
-              <Button>{user ? "Deshboard" : ">Get Started"}</Button>
+              <Button>{user ? "Deshboard" : "Get Started"}</Button>
             </Link>
             <Button variant="outline" className="text-black">
               Learn More

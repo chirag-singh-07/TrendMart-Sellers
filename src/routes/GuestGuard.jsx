@@ -18,7 +18,7 @@ const GuestGuard = () => {
   }
 
   // If authenticated and verified, redirect to home
-  return !isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
 };
 
 export default GuestGuard;
