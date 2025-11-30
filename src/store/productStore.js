@@ -2,8 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 import { toast } from "sonner";
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8000/api/admin";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
 export const useProductStore = create((set) => ({
   products: [],
@@ -13,7 +12,9 @@ export const useProductStore = create((set) => ({
   getAllProducts: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get(`${API_URL}/product/all-products`);
+      const response = await axios.get(
+        `${API_URL}/seller/product/all-products`
+      );
       set({ products: response.data.data, isLoading: false });
     } catch (error) {
       const errorMessage =
@@ -26,7 +27,10 @@ export const useProductStore = create((set) => ({
   addProduct: async (formData) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post(`${API_URL}/product/add`, formData);
+      const response = await axios.post(
+        `${API_URL}/seller/product/add`,
+        formData
+      );
       set((state) => ({
         products: [...state.products, response.data.data], // Fixed: Now correctly accessing `state.products`
         isLoading: false,
@@ -46,7 +50,7 @@ export const useProductStore = create((set) => ({
 
     try {
       const response = await axios.put(
-        `${API_URL}/product/edit/${productId}`,
+        `${API_URL}/seller/product/edit/${productId}`,
         formData
       );
       set((state) => ({
@@ -67,7 +71,7 @@ export const useProductStore = create((set) => ({
   deleteProduct: async (productId) => {
     set({ isLoading: true, error: null });
     try {
-      await axios.delete(`${API_URL}/product/delete/${productId}`);
+      await axios.delete(`${API_URL}/seller/product/delete/${productId}`);
       set((state) => ({
         products: state.products.filter((product) => product._id !== productId),
         isLoading: false,
